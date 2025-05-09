@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 
-def compute_optimal_route(location_probs: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:
+def compute_optimal_route(location_probs, top_n=10):
     sorted_locations = location_probs.sort_values("avg_probability", ascending=False).head(top_n).reset_index(drop=True)
 
     route = [sorted_locations.loc[0]]

@@ -1,5 +1,11 @@
 pandas
+numpy
 streamlit
 scikit-learn
 geopandas
 matplotlib
+shapely
+altair
+pydeck
+statsmodels
+joblib
