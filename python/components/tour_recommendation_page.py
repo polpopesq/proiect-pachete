@@ -13,7 +13,6 @@ class TourRecommendationPage:
         self.location_probs = (
             self.df_clean.groupby(['city', 'state'])
             .agg(
-                count_obs=('hotspot_prob', 'count'),
                 avg_probability=('hotspot_prob', 'mean'),
                 latitude=('latitude', 'mean'),
                 longitude=('longitude', 'mean')
@@ -39,9 +38,6 @@ class TourRecommendationPage:
         location_probs['color'] = location_probs['avg_probability'].apply(
             lambda x: [255, int(255 * (1 - x)), int(255 * (1 - x))]
         )
-
-        st.subheader("Top 10 locatii")
-        st.dataframe(location_probs.head(10))
 
         st.subheader("Vizualizare grafica")
         chart = alt.Chart(location_probs.head(10)).mark_bar().encode(
